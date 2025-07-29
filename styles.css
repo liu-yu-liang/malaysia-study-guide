@@ -1,0 +1,1033 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --primary-color: #FF4500;
+    --secondary-color: #FFA500;
+    --text-color: rgba(255, 255, 255, 0.9);
+    --text-color-muted: rgba(255, 255, 255, 0.7);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(255, 165, 0, 0.2);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --glow-effect: 0 0 15px rgba(255, 165, 0, 0.5);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000;
+    color: var(--text-color);
+    line-height: 1.8;
+    font-weight: 400;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 背景效果 */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #000000, #1a1a1a);
+}
+
+.glass-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+/* 标题和导航 */
+header {
+    padding: 2rem 5%;
+    position: relative;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* 深色模式切换按钮 */
+.dark-mode-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.2);
+    overflow: hidden;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
+}
+
+.dark-mode-toggle svg {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+}
+
+.sun-icon {
+    opacity: 1;
+    position: absolute;
+}
+
+.moon-icon {
+    opacity: 0;
+    position: absolute;
+}
+
+body.dark-mode .sun-icon {
+    opacity: 0;
+}
+
+body.dark-mode .moon-icon {
+    opacity: 1;
+}
+
+.site-title {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+}
+
+.site-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color-muted);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.main-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--glow-effect);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.main-nav a:hover::after {
+    width: 80%;
+}
+
+/* 主要内容区域 */
+main {
+    padding: 2rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 15px 40px rgba(255, 165, 0, 0.25);
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 69, 0, 0.05), rgba(255, 165, 0, 0.05));
+    z-index: -1;
+}
+
+.section-header {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.underline {
+    height: 3px;
+    width: 100px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    margin-top: 0.5rem;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+}
+
+.section-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* 留学概览部分 */
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.overview-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.overview-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--glow-effect);
+}
+
+.highlight-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.2);
+}
+
+.highlight-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.overview-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.overview-item p {
+    color: var(--text-color-muted);
+    font-size: 1rem;
+}
+
+/* 大学卡片样式 */
+.university-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.university-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.university-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--glow-effect);
+}
+
+.university-header {
+    padding: 1.5rem;
+    background: linear-gradient(45deg, rgba(255, 69, 0, 0.8), rgba(255, 165, 0, 0.8));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.university-header h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 0;
+}
+
+.university-rank {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.university-content {
+    padding: 1.5rem;
+}
+
+.university-info {
+    margin-bottom: 1.5rem;
+}
+
+.university-info p {
+    margin-bottom: 0.8rem;
+}
+
+.university-highlights h4,
+.university-features h4,
+.pros-cons h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+    position: relative;
+    padding-left: 1rem;
+}
+
+.university-highlights h4::before,
+.university-features h4::before,
+.pros-cons h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 20px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+.university-highlights ul,
+.university-features ul,
+.pros-cons ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.university-highlights li,
+.university-features li,
+.pros-cons li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.university-highlights li::before,
+.university-features li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+.pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.pros li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+}
+
+.cons li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: #F44336;
+}
+
+/* 申请条件标签页 */
+.application-tabs {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.tab-header {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tab-btn.active {
+    background: linear-gradient(45deg, rgba(255, 69, 0, 0.3), rgba(255, 165, 0, 0.3));
+}
+
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.tab-btn.active::after {
+    width: 80%;
+}
+
+.tab-content {
+    padding: 2rem;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.application-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.application-column {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.application-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.application-column ul {
+    list-style: none;
+}
+
+.application-column li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.application-column li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+.phd-requirements {
+    list-style: none;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.phd-requirements li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.phd-requirements li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+/* 费用详情 */
+.expenses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.expense-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.expense-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--glow-effect);
+}
+
+.expense-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.2);
+}
+
+.expense-card h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.expense-details {
+    color: var(--text-color-muted);
+}
+
+.expense-summary {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.expense-category {
+    margin-bottom: 1.5rem;
+}
+
+.expense-category h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+    position: relative;
+    padding-left: 1rem;
+}
+
+.expense-category h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 20px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+.expense-category ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.expense-category li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.expense-category li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+/* 申请流程与签证 */
+.process-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.process-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.process-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -2.5rem;
+    top: 0.5rem;
+    width: 15px;
+    height: 15px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+}
+
+.timeline-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.visa-info {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.visa-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.visa-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.visa-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+/* 就业前景 */
+.career-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.career-advantages h3,
+.career-fields h3,
+.career-china h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.advantage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.advantage-item {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.advantage-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--glow-effect);
+}
+
+.advantage-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.2);
+}
+
+.advantage-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+}
+
+.fields-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.field-item {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.field-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--glow-effect);
+}
+
+.field-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    position: relative;
+    padding-left: 1rem;
+}
+
+.field-item h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 20px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+.field-item ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.field-item li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.field-item li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+.career-china {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-container {
+    margin-top: 2rem;
+}
+
+.cta-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 69, 0, 0.5);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(255, 69, 0, 0.3);
+}
+
+/* 页脚 */
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 3rem 5% 1rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    position: relative;
+    display: inline-block;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+.footer-section p {
+    margin-bottom: 1rem;
+    color: var(--text-color-muted);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section a {
+    color: var(--text-color-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color-muted);
+    font-size: 0.9rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .site-title {
+        font-size: 3.5rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .process-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .application-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .pros-cons {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 3rem;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .glass-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .site-title {
+        font-size: 2.5rem;
+    }
+    
+    .site-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .overview-grid,
+    .university-grid,
+    .expenses-grid,
+    .advantage-grid,
+    .fields-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 动画效果 */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --glass-bg: rgba(255, 255, 255, 0.08);
+        --glass-border: rgba(255, 255, 255, 0.15);
+    }
+}
