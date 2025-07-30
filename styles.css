@@ -29,6 +29,12 @@ body {
     font-weight: 400;
     overflow-x: hidden;
     position: relative;
+    pointer-events: none;
+}
+
+/* 允许特定元素交互 */
+a, button, input, select, textarea, .dark-mode-toggle, .tab-buttons button {
+    pointer-events: auto;
 }
 
 /* 背景效果 */
